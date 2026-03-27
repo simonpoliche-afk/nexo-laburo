@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Misiones y Ruta (Curriculum de 6 Módulos)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .timeline { position: relative; max-width: 900px; margin: 2rem auto; padding: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 30px; height: 100%; width: 4px; background: rgba(0, 188, 237, 0.2); border-radius: 4px; }
+        .tl-item { position: relative; padding-left: 80px; margin-bottom: 2.5rem; }
+        .tl-dot { position: absolute; left: 18px; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--clr-bg-dark); border: 4px solid var(--clr-text-muted); z-index: 10; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem; color: var(--clr-text-muted); }
+        
+        .tl-item.completed .tl-dot { background: var(--clr-success); border-color: rgba(16, 185, 129, 0.3); color: var(--clr-bg-dark); }
+        .tl-item.completed::after { content: ''; position: absolute; top: 0; left: 30px; height: calc(100% + 2.5rem); width: 4px; background: var(--clr-success); z-index: 1; }
+        
+        .tl-item.active .tl-dot { background: var(--clr-accent); border-color: rgba(0, 188, 237, 0.3); color: var(--clr-bg-dark); box-shadow: 0 0 15px rgba(0, 188, 237, 0.5); }
+        
+        .tl-content { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: var(--border-radius-lg); padding: 1.5rem; transition: 0.3s; }
+        .tl-item.active .tl-content { border-color: rgba(0, 188, 237, 0.4); background: rgba(10, 34, 64, 0.8); }
+        
+        .tl-date { color: var(--clr-accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .tl-content h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: white; }
+        .tl-content p { color: var(--clr-text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+        
+        .loot-box { background: rgba(0,0,0,0.3); border: 1px dashed rgba(255,255,255,0.2); border-radius: var(--border-radius-md); padding: 1rem; display: flex; align-items: center; gap: 1rem; margin-top: 1rem;}
+        .loot-box.unlocked { border-style: solid; border-color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+        .loot-icon { font-size: 2rem; color: #f59e0b; }
+        .loot-info h5 { margin-bottom: 0.2rem; color: #f59e0b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;}
+        .loot-info p { margin: 0; font-size: 0.85rem; color: #e2e8f0; }
+        
+        .action-row { display: flex; gap: 1rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;">
+                <div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div>
+                <div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li class="active"><a href="ruta-aprendizaje.html"><i class="ph ph-map-pin-line"></i> Misiones y Ruta</a></li>
+                <li><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li><a href="pasantias.html"><i class="ph ph-briefcase"></i> Pasantías</a></li>
+                <li><a href="perfil.html"><i class="ph ph-user"></i> Hoja de Personaje</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Misiones de Especialización: 6 Módulos</h1>
+                    <p>Completa la currícula industrial para desbloquear armadura, habilidades pasivas y acceso a vacantes.</p>
+                </div>
+            </header>
+
+            <div class="timeline">
+                
+                <!-- Modo 1 -->
+                <div class="tl-item completed">
+                    <div class="tl-dot">1</div>
+                    <div class="tl-content">
+                        <div class="tl-date"><i class="ph-fill ph-shield-check"></i> Mes 1</div>
+                        <h3>Módulo I: Bioseguridad e Higiene Industrial</h3>
+                        <p>Fundamentos de prevención física y biológica. Conocimiento de Buenas Prácticas de Manufactura (BPM), riesgo de contaminación cruzada y EPP preventivo en cámara de frío.</p>
+                        
+                        <div class="loot-box unlocked">
+                            <i class="ph-fill ph-gift loot-icon"></i>
+                            <div class="loot-info">
+                                <h5>Misión Completada (Loot)</h5>
+                                <p><strong>Armadura Obtenida:</strong> Delantal de PVC (Equipado en tu Perfil).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modulo 2 -->
+                <div class="tl-item completed">
+                    <div class="tl-dot">2</div>
+                    <div class="tl-content">
+                        <div class="tl-date"><i class="ph-fill ph-map-trifold"></i> Mes 2</div>
+                        <h3>Módulo II: Cartografía Anatómica Bovina</h3>
+                        <p>Asimilación de toda la distribución fisiológica muscular y ósea, cuartos delanteros, traseros, asado y vacíos. Sin este mapa mental, el rendimiento en mesa caerá radicalmente.</p>
+                        
+                        <div class="action-row">
+                            <a href="modulo-teorico.html" class="btn-secondary" style="border-color: rgba(255,255,255,0.2); color:white;"><i class="ph-fill ph-book-open-text"></i> Repasar Atlas Visual</a>
+                        </div>
+                        
+                        <div class="loot-box unlocked">
+                            <i class="ph-fill ph-magic-wand loot-icon" style="color: #34d399;"></i>
+                            <div class="loot-info">
+                                <h5 style="color: #34d399;">Habilidad Pasiva Adquirida</h5>
+                                <p><strong>Skill Desbloqueado:</strong> Ojo Clínico (Grasa y Fibras).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modulo 3 -->
+                <div class="tl-item active">
+                    <div class="tl-dot">3</div>
+                    <div class="tl-content">
+                        <div class="tl-date"><i class="ph-fill ph-sword"></i> Meses 3-4 (Misión Actual)</div>
+                        <h3>Módulo III: Manejo de Cuchillos y Afilado</h3>
+                        <p>Estudio práctico sobre despostadores, hachas y cuchillas carniceras. Dinámica de afilado con piedra angular y rectificado de lomo con chaira durante la jornada laboral frigorífica.</p>
+                        <div class="action-row">
+                            <a href="cursos.html" class="btn-primary"><i class="ph-fill ph-play-circle"></i> Iniciar Clases de Video</a>
+                            <a href="#" class="btn-secondary" style="border-color: rgba(245, 158, 11, 0.4); color: #f59e0b;"><i class="ph-fill ph-exam"></i> Examen Jefe Disponible</a>
+                        </div>
+                        
+                        <div class="loot-box">
+                            <i class="ph ph-lock-key loot-icon" style="color: var(--clr-text-muted);"></i>
+                            <div class="loot-info">
+                                <h5 style="color: var(--clr-text-muted);">Posible Recompensa</h5>
+                                <p style="color: rgba(255,255,255,0.4);">[Armadura] Completa el examen final para ganar: <strong>Guante de Malla de Acero</strong> (+50 Defensa).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modulo 4 -->
+                <div class="tl-item">
+                    <div class="tl-dot">4</div>
+                    <div class="tl-content" style="opacity: 0.6; filter: grayscale(1);">
+                        <div class="tl-date"><i class="ph-fill ph-crosshair"></i> Meses 5-6</div>
+                        <h3>Módulo IV: Técnicas de Desposte y Cuarteo</h3>
+                        <p>Métodos de extracción aérea versus trabajo de mesa. Minimizar la cantidad de restos de carne adjunta a los cartílagos manteniendo ritmo eficiente.</p>
+                        <div class="loot-box">
+                            <div class="loot-info">
+                                <h5 style="color: var(--clr-text-muted);">Posible Recompensa</h5>
+                                <p style="color: rgba(255,255,255,0.4);">[Arma] Cuchillo Victorinox Premium.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modulo 5 & 6 -->
+                <div class="tl-item">
+                    <div class="tl-dot">5</div>
+                    <div class="tl-content" style="opacity: 0.6; filter: grayscale(1);">
+                        <div class="tl-date"><i class="ph-fill ph-storefront"></i> Meses 7-8</div>
+                        <h3>Módulo V y VI: Cortes Comerciales y Retail</h3>
+                        <p>División del asado, cortes de la rueda/nalga, dry-aged, y exhibición en la vitrina (Mostrador). Psicología de retail y recomendación culinaria al cliente corporativo e individual.</p>
+                        <div class="loot-box">
+                            <div class="loot-info">
+                                <h5 style="color: var(--clr-text-muted);">Posible Recompensa</h5>
+                                <p style="color: rgba(255,255,255,0.4);">[Armadura] Accesorio Maestro + Acceso Inmediato a Pasantías Frigoríficas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align:center; padding: 2rem 0; margin-top:2rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--border-radius-lg);">
+                    <i class="ph-fill ph-handshake" style="font-size: 3rem; color: #8b5cf6; margin-bottom: 1rem;"></i>
+                    <h3 style="color: white; font-size: 1.5rem; margin-bottom: 0.5rem;">META: Pasantía In-Situ (Meses 9-12)</h3>
+                    <p style="color: var(--clr-text-muted); max-width: 500px; margin: 0 auto;">Alcanza el Nivel 10 y desbloquea el Job Board para entrar formalmente a frigoríficos reales bajo contrato pasante.</p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Módulo Teórico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .module-layout { max-width: 900px; margin: 0 auto; padding-bottom: 4rem; }
+        .module-hero { position: relative; width: 100%; border-radius: var(--border-radius-lg); overflow: hidden; margin-bottom: 2.5rem; border: 1px solid rgba(255,255,255,0.05); }
+        .module-hero img { width: 100%; height: auto; display: block; object-fit: cover; }
+        .back-nav { margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--clr-text-muted); font-weight: 500; }
+        .back-nav:hover { color: white; }
+        .content-box { background: rgba(30, 41, 59, 0.4); padding: 2.5rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(255,255,255,0.05); line-height: 1.7; font-size: 1.05rem; color: #cbd5e1; }
+        .content-box h2 { font-size: 1.5rem; margin-bottom: 1rem; color: white; }
+        .content-box p { margin-bottom: 1.5rem; }
+        .content-box ul { padding-left: 2rem; margin-bottom: 1.5rem; list-style: square; }
+        .action-bar { margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;"><div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div><div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div></div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li class="active"><a href="ruta-aprendizaje.html"><i class="ph ph-map-pin-line"></i> Mi Ruta</a></li>
+                <li><a href="cursos.html"><i class="ph ph-book-open"></i> Biblioteca</a></li>
+                <li><a href="evaluaciones.html"><i class="ph ph-exam"></i> Evaluaciones</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="module-layout">
+                <a href="ruta-aprendizaje.html" class="back-nav"><i class="ph ph-arrow-left"></i> Volver a la Ruta</a>
+                
+                <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Cortes Anatómicos de Res</h1>
+                <p style="color: var(--clr-accent); margin-bottom: 2rem; font-weight: 600;">Módulo 2 • Mes 3</p>
+
+                <!-- Infografía generada por IA -->
+                <div class="module-hero">
+                    <img src="assets/diag_res_es_1774561052575.png" alt="Diagrama de Res Interactivo">
+                </div>
+
+                <div class="content-box">
+                    <h2>Análisis de la Cartografía Cárnica</h2>
+                    <p>Comprender la anatomía del bovino es el paso fundamental para optimizar el rendimiento de la media res. Cada sección de la de arriba (Chuck, Ribs, Sirloin, Round) posee un porcentaje distinto de desperdicio óseo y grasa de cobertura.</p>
+                    
+                    <ul>
+                        <li><strong style="color:white;">Cuarto Trasero (Round/Sirloin):</strong> Concentra cortes de primera calidad y valor comercial (Peceto, Nalga, Cuadril). Requiere precisión milimétrica en el desposte.</li>
+                        <li><strong style="color:white;">Asado y Costillar (Ribs/Plate):</strong> Tiempos de cocción prolongados, popularidad extrema en el mercado local. El asador evalúa la calidad del frigorífico por este corte.</li>
+                        <li><strong style="color:white;">Cuarto Delantero (Chuck):</strong> Carnes más fibrosas, ideales para picada, guisados o cocciones lentas.</li>
+                    </ul>
+
+                    <p>En el panel interactivo superior, puedes repasar las divisiones anatómicas profesionales. Asimilar esto es obligatorio para tu examen integrador de la próxima semana.</p>
+
+                    <div class="action-bar">
+                        <span style="color: var(--clr-text-muted); font-size: 0.9rem;"><i class="ph ph-clock"></i> Lectura 15 min</span>
+                        <a href="test-interactivo.html" class="btn-primary">Marcar Leído y Pasar al Test Práctico</a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

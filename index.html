@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Dashboard</title>
+    <meta name="description" content="Plataforma de educación en oficios y nexo de pasantías privadas.">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos Phosphor (Modernos y limpios) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;"><div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div><div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div></div>
+            
+            <ul class="nav-links">
+                <li class="active"><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li><a href="pasantias.html"><i class="ph ph-briefcase"></i> Pasantías</a></li>
+                <li><a href="evaluaciones.html"><i class="ph ph-exam"></i> Evaluaciones</a></li>
+                <li><a href="perfil.html"><i class="ph ph-user"></i> Perfil</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="logout-link"><i class="ph ph-sign-out"></i> Cerrar Sesión</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Hola, Juan Perez <span class="badge">Aprendiz de Carnicero</span></h1>
+                    <p>Bienvenido de vuelta a tu formación profesional.</p>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar cursos, pasantías...">
+                    </div>
+                    <button class="icon-btn notif-btn">
+                        <i class="ph ph-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <div class="user-avatar">
+                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Juan" alt="Avatar Juan Perez">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                
+                <!-- Progreso General -->
+                <section class="card progress-card span-2">
+                    <div class="card-header">
+                        <h2>Tu Progreso General</h2>
+                        <span class="course-name">Corte de Carnes - Nivel 1</span>
+                    </div>
+                    <div class="progress-details">
+                        <div class="progress-circle" data-progress="65">
+                            <svg viewBox="0 0 36 36" class="circular-chart orange">
+                              <path class="circle-bg"
+                                d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                              />
+                              <path class="circle"
+                                stroke-dasharray="65, 100"
+                                d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                              />
+                              <text x="18" y="20.35" class="percentage">65%</text>
+                            </svg>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="stat-value">12 / 18</span>
+                                <span class="stat-label">Cápsulas completadas</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">2</span>
+                                <span class="stat-label">Evaluaciones pendientes</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Próximas Pasantías -->
+                <section class="card internships-card span-1">
+                    <div class="card-header">
+                        <h2>Oportunidades de Pasantías</h2>
+                        <a href="#" class="view-all">Ver todas</a>
+                    </div>
+                    <div class="internship-list">
+                        <!-- Pasantía 1 -->
+                        <div class="internship-item">
+                            <div class="internship-info">
+                                <h3>Ayudante Despostador</h3>
+                                <p>Frigorífico Los Andes S.A.</p>
+                                <div class="tags">
+                                    <span class="tag paid">Remunerado</span>
+                                    <span class="tag onsite">Presencial</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary">Postular</button>
+                        </div>
+                        <!-- Pasantía 2 -->
+                        <div class="internship-item">
+                            <div class="internship-info">
+                                <h3>Aprendiz Atención al Público</h3>
+                                <p>Carnicerías Don Pepe</p>
+                                <div class="tags">
+                                    <span class="tag paid">Remunerado</span>
+                                    <span class="tag part-time">Part-time</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary">Postular</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Microlearning -->
+                <section class="card microlearning-card span-full">
+                    <div class="card-header">
+                        <h2>Continuar Aprendiendo (Microlearning)</h2>
+                    </div>
+                    <div class="course-cards">
+                        <!-- Course 1 -->
+                        <div class="course-card">
+                            <div class="course-thumbnail bg-gradient-1">
+                                <i class="ph ph-play-circle"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Tipos de Cuchillos y Afilado</h3>
+                                <p class="duration"><i class="ph ph-clock"></i> 8 mins</p>
+                                <button class="btn-primary w-full">Continuar cápsula</button>
+                            </div>
+                        </div>
+                        <!-- Course 2 -->
+                        <div class="course-card">
+                            <div class="course-thumbnail bg-gradient-2">
+                                <i class="ph ph-play-circle"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Seguridad e Higiene Inicial</h3>
+                                <p class="duration"><i class="ph ph-clock"></i> 12 mins</p>
+                                <button class="btn-primary w-full">Iniciar cápsula</button>
+                            </div>
+                        </div>
+                        <!-- Course 3 -->
+                        <div class="course-card locked">
+                            <div class="course-thumbnail bg-gradient-locked">
+                                <i class="ph ph-lock"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3>Desposte Básico de Res</h3>
+                                <p class="duration"><i class="ph ph-clock"></i> 15 mins</p>
+                                <button class="btn-disabled w-full" disabled>Requisito pendiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Reproductor Microlearning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .player-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+        }
+
+        .video-container {
+            background: #000;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 40%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+        }
+
+        .video-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .custom-controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 45%;
+            background: var(--clr-accent);
+        }
+
+        .sidebar-modules {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .module-item:hover, .module-item.active {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .module-item i {
+            font-size: 1.5rem;
+        }
+        
+        .module-item.completed i { color: var(--clr-success); }
+        .module-item.active i { color: var(--clr-primary); }
+        .module-item.locked i { color: var(--clr-text-muted); }
+
+        .module-info h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+        .module-info p { font-size: 0.8rem; color: var(--clr-text-muted); }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--clr-text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .back-link:hover { color: white; }
+
+        @media (max-width: 1024px) {
+            .player-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;"><div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div><div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div></div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li class="active"><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li><a href="pasantias.html"><i class="ph ph-briefcase"></i> Pasantías</a></li>
+                <li><a href="evaluaciones.html"><i class="ph ph-exam"></i> Evaluaciones</a></li>
+                <li><a href="perfil.html"><i class="ph ph-user"></i> Perfil</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content" style="padding-top: 1rem;">
+            <a href="cursos.html" class="back-link"><i class="ph ph-arrow-left"></i> Volver a Mis Cursos</a>
+            
+            <div class="player-layout">
+                <!-- Video Player Area -->
+                <div class="video-main">
+                    <div class="video-container" style="background: url('assets/thumb_video_es_1774561145272.png') center/cover;">
+                        <i class="ph-fill ph-play-circle" style="font-size: 5rem; color: rgba(255,255,255,0.8); cursor: pointer; text-shadow: 0 4px 10px rgba(0,0,0,0.5);"></i>
+                        
+                        <div class="video-overlay">
+                            <h2 class="video-title">1. Introducción al Manejo de Cuchillos</h2>
+                            <div class="custom-controls">
+                                <i class="ph-fill ph-pause"></i>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill"></div>
+                                </div>
+                                <span style="font-size: 0.9rem;">03:45 / 08:20</span>
+                                <i class="ph-fill ph-speaker-high"></i>
+                                <i class="ph-fill ph-corners-out"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Resumen de la lección</h2>
+                        <p style="color: var(--clr-text-muted); line-height: 1.6;">En esta lección aprenderás las diferencias fundamentales entre el cuchillo de desposte, fileteador y cuchilla de golpe. Dominar el agarre seguro es crítico para evitar accidentes y acelerar el trabajo productivo en tu futura pasantía.</p>
+                        
+                        <button class="btn-primary" style="margin-top: 1.5rem;" onclick="alert('Lección marcada como completada. Tu progreso aumentó.')">Marcar como Completado y Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Playlist / Modules -->
+                <div class="sidebar-modules">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Corte de Carnes - Nivel 1</h3>
+                    <p style="color: var(--clr-accent); font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;">25% Completado</p>
+
+                    <div class="module-item completed">
+                        <i class="ph-fill ph-check-circle"></i>
+                        <div class="module-info">
+                            <h4>Presentación del Oficio</h4>
+                            <p>02:15 mins</p>
+                        </div>
+                    </div>
+
+                    <div class="module-item active">
+                        <i class="ph-fill ph-play-circle"></i>
+                        <div class="module-info">
+                            <h4>Manejo de Cuchillos</h4>
+                            <p>08:20 mins</p>
+                        </div>
+                    </div>
+
+                    <div class="module-item locked">
+                        <i class="ph-fill ph-lock-key"></i>
+                        <div class="module-info">
+                            <h4>Afilado Seguro</h4>
+                            <p>Bloqueado: Termina lección previa</p>
+                        </div>
+                    </div>
+
+                    <div class="module-item locked">
+                        <i class="ph-fill ph-lock-key"></i>
+                        <div class="module-info">
+                            <h4>Desposte Básico (Res)</h4>
+                            <p>Bloqueado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

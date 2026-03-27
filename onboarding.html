@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Personaliza tu Ruta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .onboarding-screen { min-height: 100vh; background-color: var(--clr-bg-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
+        .onboarding-card { background: var(--clr-bg-panel); border: 1px solid rgba(255,255,255,0.05); padding: 3rem; border-radius: var(--border-radius-lg); width: 100%; max-width: 800px; box-shadow: var(--shadow-soft); text-align: center; }
+        .step-indicator { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; }
+        .step-dot { height: 8px; width: 30px; border-radius: 4px; background: rgba(255,255,255,0.1); }
+        .step-dot.active { background: var(--clr-accent); }
+        
+        .ob-title { font-size: 2rem; margin-bottom: 0.5rem; }
+        .ob-desc { color: var(--clr-text-muted); margin-bottom: 3rem; }
+
+        .paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+        .path-card { background: rgba(0,0,0,0.2); border: 2px solid transparent; padding: 2rem 1.5rem; border-radius: var(--border-radius-md); cursor: pointer; transition: all 0.3s; }
+        .path-card:hover, .path-card.active { border-color: var(--clr-accent); background: rgba(249, 115, 22, 0.05); transform: translateY(-5px); }
+        .path-icon { font-size: 3rem; color: var(--clr-accent); margin-bottom: 1rem; }
+        .path-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .path-card p { font-size: 0.85rem; color: var(--clr-text-muted); }
+
+        .btn-continue { background-color: var(--clr-accent); color: white; border: none; padding: 1rem 3rem; border-radius: 30px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.2s; text-decoration: none; display: inline-block; }
+        .btn-continue:hover { background-color: var(--clr-accent-hover); box-shadow: var(--shadow-glow); }
+
+        @media (max-width: 768px) { .paths-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="onboarding-screen">
+        <div class="onboarding-card">
+            <div class="step-indicator">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+
+            <h1 class="ob-title">Elige tu Especialización</h1>
+            <p class="ob-desc">La currícula de 6 a 12 meses será adaptada según tu selección. Puedes cambiar más adelante.</p>
+
+            <div class="paths-grid">
+                <div class="path-card active" onclick="document.querySelectorAll('.path-card').forEach(n => n.classList.remove('active')); this.classList.add('active');">
+                    <i class="ph-fill ph-knife path-icon"></i>
+                    <h3>Maestro Carnicero</h3>
+                    <p>Cortes, desposte, rendimiento de res y atención al cliente especializado.</p>
+                </div>
+                <div class="path-card" onclick="document.querySelectorAll('.path-card').forEach(n => n.classList.remove('active')); this.classList.add('active');">
+                    <i class="ph-fill ph-cheese path-icon"></i>
+                    <h3>Maestro Fiambrero</h3>
+                    <p>Manipulación, maduración, corte de fiambres, quesos y facturación.</p>
+                </div>
+                <div class="path-card" onclick="document.querySelectorAll('.path-card').forEach(n => n.classList.remove('active')); this.classList.add('active');">
+                    <i class="ph-fill ph-factory path-icon"></i>
+                    <h3>Operario de Higiene</h3>
+                    <p>Plantas frigoríficas, bioseguridad industrial y prevención de riesgos.</p>
+                </div>
+            </div>
+
+            <a href="ruta-aprendizaje.html" class="btn-continue">Armar mi Plan Educativo (6 a 12 Meses)</a>
+        </div>
+    </div>
+</body>
+</html>

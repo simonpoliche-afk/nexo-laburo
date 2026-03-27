@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Evaluaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .eval-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .eval-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .eval-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .eval-card.pending {
+            border-left: 4px solid var(--clr-warning);
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .eval-card.passed {
+            border-left: 4px solid var(--clr-success);
+        }
+
+        .eval-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .eval-info p {
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+        }
+
+        .score-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .eval-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;"><div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div><div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div></div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li><a href="pasantias.html"><i class="ph ph-briefcase"></i> Pasantías</a></li>
+                <li class="active"><a href="evaluaciones.html"><i class="ph ph-exam"></i> Evaluaciones</a></li>
+                <li><a href="perfil.html"><i class="ph ph-user"></i> Perfil</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="logout-link"><i class="ph ph-sign-out"></i> Cerrar Sesión</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Evaluaciones de Asimilación</h1>
+                    <p>Mide tu conocimiento para asegurar tu excelencia en el oficio.</p>
+                </div>
+            </header>
+
+            <div class="eval-grid">
+                
+                <!-- Evaluaciones Pendientes -->
+                <div class="eval-section">
+                    <h2><i class="ph-fill ph-warning-circle" style="color: var(--clr-warning);"></i> Pendientes (Requeridas)</h2>
+                    
+                    <div class="eval-card pending">
+                        <div class="eval-info">
+                            <h3>Test Práctico: Seguridad Básica</h3>
+                            <p>Módulo: Higiene en Frigoríficos</p>
+                            <p style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem;"><i class="ph ph-clock"></i> Cierra en 2 días</p>
+                        </div>
+                        <button class="btn-primary" style="background-color: var(--clr-warning);">Comenzar Test</button>
+                    </div>
+
+                    <div class="eval-card pending">
+                        <div class="eval-info">
+                            <h3>Cuestionario: Desposte Inicial</h3>
+                            <p>Módulo: Corte de Carnes Nivel 1</p>
+                            <p style="margin-top: 0.5rem; color: #f59e0b; font-size: 0.8rem;"><i class="ph ph-lock-key-open"></i> Desbloqueado recientemente</p>
+                        </div>
+                        <button class="btn-primary" style="background-color: var(--clr-warning);">Comenzar Test</button>
+                    </div>
+                </div>
+
+                <!-- Evaluaciones Aprobadas -->
+                <div class="eval-section">
+                    <h2><i class="ph-fill ph-check-circle" style="color: var(--clr-success);"></i> Historial de Aprobadas</h2>
+
+                    <div class="eval-card passed">
+                        <div class="eval-info">
+                            <h3>Fundamentos del Cuchillo</h3>
+                            <p>Completado el 12/Oct/2023</p>
+                            <a href="#" style="font-size: 0.8rem; color: var(--clr-primary); margin-top: 0.5rem; display: inline-block;">Ver respuestas correctas</a>
+                        </div>
+                        <div class="score-badge">
+                            95%
+                        </div>
+                    </div>
+
+                    <div class="eval-card passed">
+                        <div class="eval-info">
+                            <h3>Test de Inducción General</h3>
+                            <p>Completado el 05/Oct/2023</p>
+                            <a href="#" style="font-size: 0.8rem; color: var(--clr-primary); margin-top: 0.5rem; display: inline-block;">Ver respuestas correctas</a>
+                        </div>
+                        <div class="score-badge" style="color: #60a5fa; background: rgba(59, 130, 246, 0.15);">
+                            80%
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

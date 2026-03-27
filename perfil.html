@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Hoja de Personaje (Perfil)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .character-sheet { display: grid; grid-template-columns: 350px 1fr; gap: 2rem; margin-top: 1rem; }
+        
+        /* Left Column: Avatar & Level */
+        .avatar-panel { background: var(--clr-bg-panel); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--border-radius-lg); padding: 2rem; text-align: center; position: relative; overflow: hidden; }
+        .avatar-glow { position: absolute; inset: 0; background: radial-gradient(circle at top, rgba(0, 188, 237, 0.15) 0%, transparent 60%); pointer-events: none; }
+        .hero-img-wrapper { width: 180px; height: 180px; margin: 0 auto 1.5rem auto; border-radius: 50%; padding: 5px; background: linear-gradient(135deg, var(--clr-accent), transparent); position: relative; z-index: 10; }
+        .hero-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--clr-bg-dark); }
+        .level-badge { position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 50%); background: var(--clr-accent); color: white; padding: 0.2rem 1rem; border-radius: 20px; font-weight: 900; font-size: 1.1rem; border: 3px solid var(--clr-bg-dark); }
+        
+        .xp-bar-container { background: rgba(0,0,0,0.3); height: 8px; border-radius: 4px; margin: 2rem 0 0.5rem 0; overflow: hidden; }
+        .xp-bar-fill { height: 100%; width: 45%; background: linear-gradient(90deg, #0099c2, var(--clr-accent)); box-shadow: 0 0 10px rgba(0, 188, 237, 0.5); }
+        .xp-text { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--clr-text-muted); font-weight: 600; }
+
+        /* Right Column: Stats & Inventory */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .panel-box { background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--border-radius-md); padding: 1.5rem; }
+        .panel-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+        
+        .stat-row { margin-bottom: 1rem; }
+        .stat-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.4rem; color: #cbd5e1; font-weight: 500; }
+        .stat-val { color: var(--clr-accent); font-weight: 700; }
+        .stat-bar { height: 6px; background: rgba(0,0,0,0.2); border-radius: 3px; overflow: hidden; }
+        .stat-fill { height: 100%; border-radius: 3px; }
+
+        .inventory-list { display: flex; flex-direction: column; gap: 1rem; }
+        .inv-slot { display: flex; align-items: center; gap: 1rem; background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: var(--border-radius-md); border: 1px solid transparent; }
+        .inv-slot.equipped { border-color: rgba(0, 188, 237, 0.3); background: rgba(0, 188, 237, 0.05); }
+        .inv-slot.empty { opacity: 0.5; border: 1px dashed rgba(255,255,255,0.2); }
+        .slot-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--clr-accent); }
+        .slot-info h4 { font-size: 0.9rem; color: white; margin-bottom: 0.2rem; }
+        .slot-info p { font-size: 0.75rem; color: var(--clr-text-muted); }
+
+        .skills-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .skill-badge { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; }
+
+        @media (max-width: 1024px) {
+            .character-sheet { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;">
+                <div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div>
+                <div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li><a href="ruta-aprendizaje.html"><i class="ph ph-map-pin-line"></i> Mi Ruta</a></li>
+                <li><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li><a href="pasantias.html"><i class="ph ph-briefcase"></i> Pasantías</a></li>
+                <li class="active"><a href="perfil.html"><i class="ph ph-user"></i> Hoja de Personaje</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Tu Evolución Profesional</h1>
+                    <p>Las certificaciones privadas que avalarán tus destrezas ante el Mercado.</p>
+                </div>
+                <a href="ruta-aprendizaje.html" class="btn-primary" style="text-decoration: none;"><i class="ph ph-sword"></i> Continuar Aventura</a>
+            </header>
+
+            <div class="character-sheet">
+                
+                <!-- Avatar Panel -->
+                <div class="avatar-panel">
+                    <div class="avatar-glow"></div>
+                    <div class="hero-img-wrapper">
+                        <img src="assets/avatar_heroico_1774561309384.png" alt="Hero Avatar" class="hero-img" id="hero-avatar">
+                        <div class="level-badge">LVL 3</div>
+                    </div>
+                    
+                    <h2 style="font-size: 1.5rem; margin-top: 1rem; z-index:10; position:relative;">Aprendiz Avanzado</h2>
+                    <p style="color: var(--clr-accent); font-weight: 600; font-size: 0.9rem; z-index:10; position:relative;">Clase: Maestro Carnicero</p>
+
+                    <div class="xp-bar-container" style="z-index:10; position:relative;">
+                        <div class="xp-bar-fill"></div>
+                    </div>
+                    <div class="xp-text" style="z-index:10; position:relative;">
+                        <span>XP Actual: 450</span>
+                        <span>Próx Nivel: 1000</span>
+                    </div>
+
+                    <div style="margin-top: 2rem; z-index:10; position:relative;">
+                        <p style="font-size: 0.85rem; color: var(--clr-text-muted); line-height: 1.5;">El 80% de los frigoríficos prefieren candidatos con Nivel 5 o superior. ¡Sigue avanzando en la Ruta!</p>
+                    </div>
+                </div>
+
+                <!-- Stats & Inventory -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    
+                    <!-- Habilidades Pasivas -->
+                    <div class="panel-box">
+                        <div class="panel-title"><i class="ph-fill ph-lightning"></i> Habilidades Especiales Desbloqueadas</div>
+                        <div class="skills-grid">
+                            <div class="skill-badge"><i class="ph-fill ph-eye"></i> Ojo Clínico (Cartografía)</div>
+                            <div class="skill-badge" style="background: rgba(255,255,255,0.05); color: var(--clr-text-muted); border-color: rgba(255,255,255,0.1);"><i class="ph ph-lock-key"></i> Golpe Maestro</div>
+                            <div class="skill-badge" style="background: rgba(255,255,255,0.05); color: var(--clr-text-muted); border-color: rgba(255,255,255,0.1);"><i class="ph ph-lock-key"></i> Trato Retail</div>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <!-- Atributos -->
+                        <div class="panel-box">
+                            <div class="panel-title"><i class="ph-fill ph-chart-bar"></i> Atributos del Oficio</div>
+                            
+                            <div class="stat-row">
+                                <div class="stat-label"><span>Precisión Anatómica</span> <span class="stat-val">Lvl 12</span></div>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 40%; background: #3b82f6;"></div></div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-label"><span>Higiene y Defensa</span> <span class="stat-val">Lvl 25</span></div>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 85%; background: #10b981;"></div></div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-label"><span>Velocidad de Desposte</span> <span class="stat-val">Lvl 4</span></div>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 15%; background: var(--clr-warning);"></div></div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-label"><span>Rendimiento Cero-Merma</span> <span class="stat-val">Lvl 8</span></div>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 25%; background: #8b5cf6;"></div></div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-label"><span>Carisma de Mostrador</span> <span class="stat-val">Lvl 2</span></div>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 5%; background: #ec4899;"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- Inventario Activo -->
+                        <div class="panel-box">
+                            <div class="panel-title"><i class="ph-fill ph-backpack"></i> Equipo Equipado (Armadura)</div>
+                            <div class="inventory-list">
+                                <div class="inv-slot equipped">
+                                    <div class="slot-icon"><i class="ph-fill ph-shield"></i></div>
+                                    <div class="slot-info">
+                                        <h4>Delantal de PVC (Pecho)</h4>
+                                        <p>+15 Defensa a fluidos. Rareza: Común.</p>
+                                    </div>
+                                </div>
+                                <div class="inv-slot equipped">
+                                    <div class="slot-icon"><i class="ph-fill ph-knife"></i></div>
+                                    <div class="slot-info">
+                                        <h4>Cuchillo de Práctica (Arma)</h4>
+                                        <p>+5 Corte. Hoja de carbono simple.</p>
+                                    </div>
+                                </div>
+                                <div class="inv-slot empty">
+                                    <div class="slot-icon" style="color: var(--clr-text-muted);"><i class="ph ph-hand"></i></div>
+                                    <div class="slot-info">
+                                        <h4 style="color: var(--clr-text-muted);">Sin Guante (Manos)</h4>
+                                        <p>Bloqueado: Alcanza el Módulo 3.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo B2B - Kanban de Postulantes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .b2b-badge { background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-left: 0.5rem; }
+        
+        .kanban-board { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 2rem; min-height: 70vh; }
+        .kanban-col { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--border-radius-lg); width: 320px; flex-shrink: 0; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+        .col-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 2px solid rgba(255,255,255,0.05); }
+        .col-header h3 { font-size: 1rem; color: #cbd5e1; }
+        .col-count { background: rgba(255,255,255,0.1); padding: 0.1rem 0.5rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+        
+        /* Modificadores de color de columna */
+        .col-nuevos { border-top: 3px solid var(--clr-primary); }
+        .col-revision { border-top: 3px solid var(--clr-warning); }
+        .col-entrevista { border-top: 3px solid #8b5cf6; }
+        .col-contratado { border-top: 3px solid var(--clr-success); }
+        
+        /* Drag Cards */
+        .k-card { background: var(--clr-bg-panel); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--border-radius-md); padding: 1rem; cursor: grab; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .k-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.2); }
+        .k-card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; }
+        .k-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--clr-accent); }
+        .k-name { font-weight: 600; font-size: 0.95rem; }
+        .k-lvl { background: rgba(0, 188, 237, 0.15); color: var(--clr-accent); font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700; margin-top: 0.2rem; display: inline-block;}
+        
+        .k-stats { background: rgba(0,0,0,0.2); padding: 0.6rem; border-radius: 4px; font-size: 0.75rem; color: var(--clr-text-muted); margin-bottom: 0.8rem; }
+        .k-stats div { display: flex; justify-content: space-between; margin-bottom: 0.2rem; }
+        .k-stats strong { color: white; }
+        
+        .k-actions { display: flex; gap: 0.5rem; }
+        .k-actions button { flex: 1; padding: 0.4rem; font-size: 0.8rem; border-radius: 4px; border: none; cursor: pointer; font-weight: 600; }
+        .btn-view { background: rgba(255,255,255,0.1); color: white; }
+        .btn-view:hover { background: rgba(255,255,255,0.2); }
+        .btn-move { background: rgba(139, 92, 246, 0.2); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3) !important; }
+        .btn-move:hover { background: rgba(139, 92, 246, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar B2B -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;">
+                <div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div>
+                <div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px; display:flex; align-items:center;">LABURO <span class="b2b-badge">RRHH</span></div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="empresa-panel.html"><i class="ph ph-trend-up"></i> Radar de Talento</a></li>
+                <li><a href="empresa-vacantes.html"><i class="ph ph-briefcase"></i> Mis Vacantes</a></li>
+                <li class="active"><a href="empresa-candidatos.html"><i class="ph ph-users"></i> Postulantes (Kanban)</a></li>
+                <li><a href="login.html"><i class="ph ph-sign-out"></i> Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header" style="margin-bottom: 2rem;">
+                <div class="greeting">
+                    <h1>Embudo de Contratación (Aprendiz Desposte)</h1>
+                    <p>Filtra y arrastra a los héroes estudiantiles en este tablero de Kanban hacia su Pasantía o Contrato final.</p>
+                </div>
+            </header>
+
+            <div class="kanban-board">
+                
+                <!-- Columna 1 -->
+                <div class="kanban-col col-nuevos">
+                    <div class="col-header">
+                        <h3>Nuevos (Recibidos)</h3>
+                        <span class="col-count">2</span>
+                    </div>
+                    
+                    <div class="k-card" draggable="true">
+                        <div class="k-card-header">
+                            <img src="assets/avatar_heroico_1774561309384.png" alt="Card" class="k-avatar">
+                            <div>
+                                <div class="k-name">Marcos J.</div>
+                                <div class="k-lvl">NIVEL 8</div>
+                            </div>
+                        </div>
+                        <div class="k-stats">
+                            <div><span>Precisión:</span> <strong>Alta (90%)</strong></div>
+                            <div><span>Higiene:</span> <strong style="color:var(--clr-success);">Perfecta (98%)</strong></div>
+                            <div><span>Armadura:</span> <strong>Malla Acero</strong></div>
+                        </div>
+                        <div class="k-actions">
+                            <button class="btn-view">Ver Hoja</button>
+                            <button class="btn-move">Avanzar &rarr;</button>
+                        </div>
+                    </div>
+
+                    <div class="k-card" draggable="true">
+                        <div class="k-card-header">
+                            <div class="k-avatar" style="background:#334155; display:flex; align-items:center; justify-content:center; border:none;"><i class="ph-fill ph-user" style="color:#94a3b8;"></i></div>
+                            <div>
+                                <div class="k-name">Ernesto G.</div>
+                                <div class="k-lvl">NIVEL 4</div>
+                            </div>
+                        </div>
+                        <div class="k-stats">
+                            <div><span>Precisión:</span> <strong style="color:var(--clr-warning);">Media (55%)</strong></div>
+                            <div><span>Higiene:</span> <strong>Buena (70%)</strong></div>
+                            <div><span>Armadura:</span> <strong>Delantal PVC</strong></div>
+                        </div>
+                        <div class="k-actions">
+                            <button class="btn-view">Ver Hoja</button>
+                            <button class="btn-move">Avanzar &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="kanban-col col-revision">
+                    <div class="col-header">
+                        <h3>En Revisión Técnica</h3>
+                        <span class="col-count">0</span>
+                    </div>
+                    <!-- Empty state -->
+                    <div style="text-align:center; padding: 2rem; color: rgba(255,255,255,0.1); border: 2px dashed rgba(255,255,255,0.05); border-radius: 8px;">
+                        Arrastra hojas de personaje aquí
+                    </div>
+                </div>
+
+                <!-- Columna 3 -->
+                <div class="kanban-col col-entrevista">
+                    <div class="col-header">
+                        <h3>Entrevista Presencial</h3>
+                        <span class="col-count">1</span>
+                    </div>
+                    
+                    <div class="k-card" draggable="true">
+                        <div class="k-card-header">
+                            <div class="k-avatar" style="background:#e11d48; display:flex; align-items:center; justify-content:center; border:none;"><i class="ph-fill ph-user-focus" style="color:white;"></i></div>
+                            <div>
+                                <div class="k-name">Ana M.</div>
+                                <div class="k-lvl">NIVEL 6</div>
+                            </div>
+                        </div>
+                        <div class="k-stats">
+                            <div><span>Precisión:</span> <strong>Alta (80%)</strong></div>
+                            <div><span>Higiene:</span> <strong>Buena (85%)</strong></div>
+                            <div><span>Armadura:</span> <strong>Guante Acero</strong></div>
+                        </div>
+                        <div class="k-actions">
+                            <button class="btn-view" style="flex:auto;">Agendar Hora (Mail)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 4 -->
+                <div class="kanban-col col-contratado">
+                    <div class="col-header">
+                        <h3>Contratados (Pasantes)</h3>
+                        <span class="col-count">0</span>
+                    </div>
+                    <div style="text-align:center; padding: 2rem; color: rgba(255,255,255,0.1); border: 2px dashed rgba(255,255,255,0.05); border-radius: 8px;">
+                        Aquí finaliza el viaje Nexo Laburo
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

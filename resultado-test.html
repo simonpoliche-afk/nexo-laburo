@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Resultado Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .result-screen { min-height: 100vh; background-color: var(--clr-bg-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; position: relative; overflow: hidden; }
+        .confetti-bg { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%); pointer-events: none; }
+        .result-card { background: var(--clr-bg-panel); border: 1px solid rgba(255,255,255,0.05); padding: 4rem; border-radius: var(--border-radius-lg); width: 100%; max-width: 600px; text-align: center; position: relative; z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); border: 8px solid var(--clr-success); display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 700; color: var(--clr-success); margin: 0 auto 2rem auto; }
+        
+        .result-card h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .result-card p { color: var(--clr-text-muted); font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.6; }
+        
+        .unlock-alert { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 1.5rem; border-radius: var(--border-radius-md); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; text-align: left; }
+        .unlock-alert i { font-size: 2.5rem; color: #60a5fa; }
+        .unlock-alert div h4 { color: white; margin-bottom: 0.2rem; }
+        .unlock-alert div p { margin: 0; font-size: 0.85rem; }
+
+        .btn-large { display: inline-block; background: var(--clr-primary); color: white; padding: 1rem 3rem; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.2s; }
+        .btn-large:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="result-screen">
+        <div class="confetti-bg"></div>
+        <div class="result-card">
+            <div class="score-circle">100%</div>
+            <h1>¡Módulo Aprobado!</h1>
+            <p>Has demostrado excelente dominio de la anatomía bovina. Estás cada vez más cerca de convertirte en Maestro Carnicero y aplicar a frigoríficos privados.</p>
+            
+            <div class="unlock-alert">
+                <i class="ph-fill ph-unlock"></i>
+                <div>
+                    <h4>¡Nuevo Insignia Desbloqueada!</h4>
+                    <p>Has recibido la certificación en Desposte Teórico. Ya es visible en tu Perfil Público para empleadores.</p>
+                </div>
+            </div>
+
+            <a href="ruta-aprendizaje.html" class="btn-large">Continuar la Ruta de 12 Meses</a>
+            <br>
+            <a href="evaluaciones.html" style="display:inline-block; margin-top: 1.5rem; color: var(--clr-text-muted); font-size: 0.9rem;">Ver revisión de respuestas</a>
+        </div>
+    </div>
+</body>
+</html>

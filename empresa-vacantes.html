@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo B2B - Vacantes Rápidas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .b2b-badge { background: rgba(59, 130, 246, 0.2); color: #60a5fa; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-left: 0.5rem; }
+        
+        .layout-split { display: grid; grid-template-columns: 1fr 400px; gap: 2rem; align-items: start; }
+        
+        .vacantes-list { display: flex; flex-direction: column; gap: 1rem; }
+        .v-card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: var(--border-radius-md); display: flex; justify-content: space-between; align-items: center; }
+        .v-card.active { border-left: 4px solid var(--clr-success); }
+        .v-info h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .v-info p { font-size: 0.85rem; color: var(--clr-text-muted); }
+        .v-reqs { display: flex; gap: 0.5rem; margin-top: 0.8rem; }
+        .v-req-badge { background: rgba(0,0,0,0.3); font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 12px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); }
+        .v-req-badge.lvl { border-color: var(--clr-accent); color: var(--clr-accent); }
+        
+        .v-stats { text-align: right; }
+        .v-stats .big { font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 0.3rem; }
+        .v-stats .sub { font-size: 0.8rem; color: var(--clr-text-muted); }
+
+        .form-box { background: rgba(0,0,0,0.2); padding: 2rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(0, 188, 237, 0.3); }
+        .input-group { margin-bottom: 1.2rem; }
+        .input-group label { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--clr-text-muted); }
+        .input-group input, .input-group select, .input-group textarea { width: 100%; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.8rem; border-radius: 6px; outline: none; }
+        .input-group input:focus, .input-group select:focus { border-color: var(--clr-accent); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar B2B -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;">
+                <div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div>
+                <div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px; display:flex; align-items:center;">LABURO <span class="b2b-badge">RRHH</span></div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="empresa-panel.html"><i class="ph ph-trend-up"></i> Radar de Talento</a></li>
+                <li class="active"><a href="empresa-vacantes.html"><i class="ph ph-briefcase"></i> Mis Vacantes</a></li>
+                <li><a href="empresa-candidatos.html"><i class="ph ph-users"></i> Postulantes (Kanban)</a></li>
+                <li><a href="login.html"><i class="ph ph-sign-out"></i> Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Administrador de Ofertas de Pasantía</h1>
+                    <p>Crea vacantes y establece el Nivel Heroico o Armadura mínima de los alumnos postulantes.</p>
+                </div>
+            </header>
+
+            <div class="layout-split">
+                <!-- Lista -->
+                <div>
+                    <h2 style="font-size: 1.3rem; margin-bottom: 1rem;">Vacantes Publicadas (2)</h2>
+                    
+                    <div class="vacantes-list">
+                        <div class="v-card active">
+                            <div class="v-info">
+                                <h3>Aprendiz de Despostador</h3>
+                                <p>Turno Mañana (06:00 a 14:00) • Pasantía Rentada</p>
+                                <div class="v-reqs">
+                                    <span class="v-req-badge lvl">Nivel ≥ 5</span>
+                                    <span class="v-req-badge"><i class="ph-fill ph-knife"></i> Exp. Cuchillo</span>
+                                </div>
+                            </div>
+                            <div class="v-stats">
+                                <div class="big">12</div>
+                                <div class="sub">Postulantes</div>
+                                <a href="empresa-candidatos.html" style="display:inline-block; margin-top:0.5rem; font-size:0.8rem; color:var(--clr-accent);">Ver Lista &rarr;</a>
+                            </div>
+                        </div>
+
+                        <div class="v-card active" style="border-left-color: var(--clr-warning);">
+                            <div class="v-info">
+                                <h3>Operario de Higiene (Noche)</h3>
+                                <p>Turno Noche • Media Jornada</p>
+                                <div class="v-reqs">
+                                    <span class="v-req-badge lvl">Nivel ≥ 3</span>
+                                    <span class="v-req-badge"><i class="ph-fill ph-shield"></i> Bioseguridad</span>
+                                </div>
+                            </div>
+                            <div class="v-stats">
+                                <div class="big">2</div>
+                                <div class="sub">Postulantes</div>
+                                <a href="empresa-candidatos.html" style="display:inline-block; margin-top:0.5rem; font-size:0.8rem; color:var(--clr-accent);">Ver Lista &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="form-box">
+                    <h3 style="margin-bottom: 1.5rem; display:flex; align-items:center; gap:0.5rem;"><i class="ph-fill ph-plus-circle" style="color:var(--clr-accent);"></i> Nueva Solicitud</h3>
+                    <form onsubmit="event.preventDefault(); alert('Vacante publicada al pool de alumnos heroicos.');">
+                        <div class="input-group">
+                            <label>Título del Puesto</label>
+                            <input type="text" placeholder="Ej. Cajero/Fiambrero" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Requisito RPG (Nivel Mínimo Nexo)</label>
+                            <select required>
+                                <option value="">Selecciona Nivel</option>
+                                <option value="1">Cualquier Nivel (Abierto)</option>
+                                <option value="3">Nivel 3+ (Básico Superado)</option>
+                                <option value="5">Nivel 5+ (Avanzado Cortador)</option>
+                                <option value="8">Nivel 8+ (Alta Bioseguridad)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Habilidad Clave (Stat Principal)</label>
+                            <select>
+                                <option>Indiferente</option>
+                                <option>Alta Precisión Anatómica</option>
+                                <option>Velocidad de Desposte</option>
+                                <option>Manejo de Público (Mostrador)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary w-full" style="padding: 1rem;">Lanzar Vacante a Nexo</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>

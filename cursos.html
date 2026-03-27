@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Mis Cursos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .courses-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--clr-text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--clr-primary);
+            border-color: var(--clr-primary);
+        }
+
+        /* Large Grid */
+        .courses-library {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;"><div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div><div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div></div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li class="active"><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li><a href="pasantias.html"><i class="ph ph-briefcase"></i> Pasantías</a></li>
+                <li><a href="evaluaciones.html"><i class="ph ph-exam"></i> Evaluaciones</a></li>
+                <li><a href="perfil.html"><i class="ph ph-user"></i> Perfil</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="logout-link"><i class="ph ph-sign-out"></i> Cerrar Sesión</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Mis Cursos y Microlearning</h1>
+                    <p>Continúa tu especialización en tu oficio.</p>
+                </div>
+                <div class="header-actions">
+                    <div class="user-avatar">
+                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Juan" alt="Avatar Juan Perez">
+                    </div>
+                </div>
+            </header>
+
+            <div class="category-filters">
+                <button class="filter-btn active">Todos los módulos</button>
+                <button class="filter-btn">Carnicería y Desposte</button>
+                <button class="filter-btn">Higiene Industrial</button>
+                <button class="filter-btn">Atención al Cliente</button>
+            </div>
+
+            <div class="courses-library">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-thumbnail bg-gradient-1">
+                        <i class="ph ph-knife"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Tipos de Cuchillos y Manejo Seguro</h3>
+                        <p class="duration"><i class="ph ph-clock"></i> 3 cápsulas (24 mins)</p>
+                        <a href="video-capsula.html" class="btn-primary w-full" style="display:inline-block; text-align:center;">Retomar Módulo</a>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-thumbnail bg-gradient-2">
+                        <i class="ph ph-drop"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Higiene en Frigoríficos</h3>
+                        <p class="duration"><i class="ph ph-clock"></i> 5 cápsulas (45 mins)</p>
+                        <a href="video-capsula.html" class="btn-primary w-full" style="display:inline-block; text-align:center;">Iniciar Módulo</a>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card locked">
+                    <div class="course-thumbnail bg-gradient-locked">
+                        <i class="ph ph-storefront"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Atención al Público y Ventas</h3>
+                        <p class="duration"><i class="ph ph-clock"></i> 6 cápsulas (50 mins)</p>
+                        <button class="btn-disabled w-full" disabled>Requiere Nivel 2</button>
+                    </div>
+                </div>
+                
+                 <!-- Course 4 -->
+                 <div class="course-card">
+                    <div class="course-thumbnail bg-gradient-1" style="background: linear-gradient(135deg, #8b5cf6, #5b21b6);">
+                        <i class="ph ph-cow"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3>Desposte de Res Categoria Especial</h3>
+                        <p class="duration"><i class="ph ph-clock"></i> 4 cápsulas (35 mins)</p>
+                        <a href="video-capsula.html" class="btn-primary w-full" style="display:inline-block; text-align:center;">Iniciar Módulo</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>

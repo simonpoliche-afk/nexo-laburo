@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Registro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .auth-container { display: flex; height: 100vh; width: 100vw; background-color: var(--clr-bg-dark); overflow: hidden; }
+        .auth-form-container { width: 500px; display: flex; flex-direction: column; justify-content: center; padding: 3rem; background-color: var(--clr-bg-panel); z-index: 20; box-shadow: 10px 0 30px rgba(0,0,0,0.5); }
+        .auth-banner { flex: 1; background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1574323347407-744db60634ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') center/cover; display: flex; flex-direction: column; justify-content: center; padding: 4rem; color: white; position: relative; }
+        .form-header { margin-bottom: 2.5rem; text-align: center; }
+        .form-header i { font-size: 3rem; color: var(--clr-primary); margin-bottom: 1rem; }
+        .form-header h2 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .form-header p { color: var(--clr-text-muted); font-size: 0.9rem; }
+        
+        .role-selector { display: flex; gap: 1rem; margin-bottom: 2rem; }
+        .role-card { flex: 1; padding: 1.5rem 1rem; text-align: center; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--border-radius-md); cursor: pointer; transition: all 0.2s; }
+        .role-card:hover, .role-card.active { border-color: var(--clr-primary); background: rgba(59, 130, 246, 0.1); }
+        .role-card i { font-size: 2rem; color: var(--clr-primary); margin-bottom: 0.5rem; }
+        .role-card h3 { font-size: 1rem; }
+        
+        .auth-form .input-group { margin-bottom: 1.25rem; }
+        .auth-form label { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; color: var(--clr-text-muted); }
+        .auth-form .input-wrapper { position: relative; }
+        .auth-form .input-wrapper i { position: absolute; top: 50%; transform: translateY(-50%); left: 1rem; color: var(--clr-text-muted); font-size: 1.2rem; }
+        .auth-form input { width: 100%; background-color: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.75rem 1rem 0.75rem 2.8rem; border-radius: var(--border-radius-sm); outline: none; transition: 0.3s; }
+        .auth-form input:focus { border-color: var(--clr-primary); box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
+        .btn-submit { width: 100%; background-color: var(--clr-primary); color: white; border: none; padding: 0.85rem; border-radius: var(--border-radius-sm); font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: 0.2s; }
+        .btn-submit:hover { background-color: #2563eb; }
+        .login-prompt { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--clr-text-muted); }
+        .login-prompt a { color: var(--clr-accent); font-weight: 600; }
+        
+        @media (max-width: 900px) { .auth-banner { display: none; } .auth-form-container { width: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Form -->
+        <div class="auth-form-container">
+            <div class="form-header">
+                <h2>Crea tu cuenta</h2>
+                <p>El primer paso hacia tu profesionalización u obtener el mejor talento.</p>
+            </div>
+
+            <div class="role-selector">
+                <div class="role-card active" onclick="document.querySelectorAll('.role-card').forEach(n => n.classList.remove('active')); this.classList.add('active');">
+                    <i class="ph-fill ph-student"></i>
+                    <h3>Alumno / Aprendiz</h3>
+                </div>
+                <div class="role-card" onclick="document.querySelectorAll('.role-card').forEach(n => n.classList.remove('active')); this.classList.add('active');">
+                    <i class="ph-fill ph-storefront"></i>
+                    <h3>Empresa Privada</h3>
+                </div>
+            </div>
+
+            <form class="auth-form" action="onboarding.html" method="GET">
+                <div class="input-group">
+                    <label>Nombre y Apellido / Razón Social</label>
+                    <div class="input-wrapper">
+                        <i class="ph ph-user"></i>
+                        <input type="text" placeholder="Ej. Juan Perez" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Correo Electrónico</label>
+                    <div class="input-wrapper">
+                        <i class="ph ph-envelope"></i>
+                        <input type="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <div class="input-wrapper">
+                        <i class="ph ph-lock-key"></i>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Siguiente Paso</button>
+
+                <p class="login-prompt">
+                    ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Banner -->
+        <div class="auth-banner">
+            <div style="max-width: 500px; position: relative; z-index: 10;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">Construye tu <span style="color: var(--clr-primary);">Talento</span> con Certificación Privada.</h1>
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8);">Más de 150 empresas buscan pasantes de oficios cada mes a través de Nexo Laburo.</p>
+            </div>
+            <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); pointer-events: none;"></div>
+        </div>
+    </div>
+</body>
+</html>

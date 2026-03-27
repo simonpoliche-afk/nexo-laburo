@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Pasantías Privadas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .jobs-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            height: 100%;
+        }
+
+        .job-listings {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .job-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .job-card:hover, .job-card.active {
+            border-color: var(--clr-accent);
+            background: rgba(249, 115, 22, 0.05);
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--clr-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .job-main h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .job-main p {
+            color: var(--clr-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .job-details-pane {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .job-details-pane h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1rem;
+        }
+
+        .req-list {
+            margin: 1.5rem 0;
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: var(--clr-text-muted);
+        }
+
+        .req-list li { margin-bottom: 0.5rem; }
+
+        @media (max-width: 1024px) {
+            .jobs-layout { grid-template-columns: 1fr; }
+            .job-details-pane { display: none; /* simple responsive for now */ }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;"><div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div><div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div></div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li class="active"><a href="pasantias.html"><i class="ph ph-briefcase"></i> Pasantías</a></li>
+                <li><a href="evaluaciones.html"><i class="ph ph-exam"></i> Evaluaciones</a></li>
+                <li><a href="perfil.html"><i class="ph ph-user"></i> Perfil</a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="login.html" class="logout-link"><i class="ph ph-sign-out"></i> Cerrar Sesión</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Bolsa de Pasantías y Trabajo</h1>
+                    <p>Encuentra oportunidades reales en empresas privadas conectadas a la plataforma.</p>
+                </div>
+            </header>
+
+            <div class="jobs-layout">
+                <!-- Lista de Empleos -->
+                <div class="job-listings">
+                    
+                    <div class="job-card active">
+                        <div class="company-logo" style="background: #10b981;"><i class="ph ph-storefront"></i></div>
+                        <div class="job-main">
+                            <h3>Aprendiz de Despostador (Remunerado)</h3>
+                            <p>Frigorífico "Las Pampas" S.R.L - Córdoba, Argentina</p>
+                            <div class="tags">
+                                <span class="tag paid">Remunerado</span>
+                                <span class="tag onsite">Presencial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="company-logo" style="background: #f59e0b;"><i class="ph ph-users"></i></div>
+                        <div class="job-main">
+                            <h3>Atención al Público en Carnicería Boutique</h3>
+                            <p>Carnes Premium 'El Novillo' - CABA</p>
+                            <div class="tags">
+                                <span class="tag paid">Remunerado</span>
+                                <span class="tag part-time">Part-time</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="company-logo" style="background: #3b82f6;"><i class="ph ph-factory"></i></div>
+                        <div class="job-main">
+                            <h3>Operador de Higiene Industrial (Pasantía)</h3>
+                            <p>Consorcio Exportador Sureño - Rosario</p>
+                            <div class="tags">
+                                <span class="tag onsite">Presencial</span>
+                                <span class="tag part-time">Flexible</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Detalles de Pasantía Seleccionada -->
+                <div class="job-details-pane">
+                    <h2>Aprendiz de Despostador (Remunerado)</h2>
+                    <p style="color: var(--clr-text-muted); margin-bottom: 1rem;"><i class="ph ph-map-pin"></i> Frigorífico "Las Pampas" S.R.L - Córdoba Capital</p>
+                    
+                    <h3>Descripción del Rol</h3>
+                    <p style="font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem; line-height: 1.6;">
+                        Buscamos un aprendiz proactivo que haya completado al menos el 50% de su formación en 'Desposte Básico' dentro de Nexo Laburo. Serás guiado por un maestro despostador con 20 años de experiencia.
+                    </p>
+
+                    <h3 style="margin-top: 1.5rem;">Requisitos</h3>
+                    <ul class="req-list">
+                        <li>Certificado de 'Tipos de Cuchillos' (Nexo Laburo)</li>
+                        <li>Evaluación de Higiene Inicial aprobada (80%+)</li>
+                        <li>Disponibilidad turno mañana (06:00 a 10:00 AM)</li>
+                    </ul>
+
+                    <div style="margin-top: 2.5rem;">
+                        <a href="mis-postulaciones.html" class="btn-primary w-full" style="display:inline-block; text-align:center; padding: 1rem; font-size: 1.1rem; box-sizing: border-box;">Postular con Perfil de Nexo Laburo</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

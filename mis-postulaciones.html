@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Laburo - Mis Postulaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .tabs { display: flex; gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; }
+        .tab { padding: 1rem 0; color: var(--clr-text-muted); font-weight: 500; cursor: pointer; position: relative; }
+        .tab.active { color: white; }
+        .tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background: var(--clr-primary); }
+        
+        .applications-list { display: flex; flex-direction: column; gap: 1rem; }
+        .app-card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: var(--border-radius-lg); display: flex; align-items: center; justify-content: space-between; }
+        .app-card.interview-stage { border-left: 4px solid #8b5cf6; }
+        
+        .company-header { display: flex; align-items: center; gap: 1.5rem; }
+        .c-logo { width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; }
+        .c-info h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .c-info p { font-size: 0.85rem; color: var(--clr-text-muted); }
+        
+        .status-tracker { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+        .step { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--clr-text-muted); }
+        .step i { font-size: 1.2rem; }
+        .step.done { color: var(--clr-success); }
+        .step.current { color: #8b5cf6; font-weight: 600; }
+        .line { width: 40px; height: 2px; background: rgba(255,255,255,0.1); }
+        .line.done { background: var(--clr-success); }
+        
+        .action-cell { text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo" style="display:flex;flex-direction:column;align-items:flex-start;gap:0;"><div style="font-size:2rem;font-weight:900;line-height:0.9;letter-spacing:-1.5px;">NE<span style="color:var(--clr-accent);">X</span>O</div><div style="font-size:1.1rem;font-weight:700;letter-spacing:1px;margin-top:2px;">LABURO</div></div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="ph ph-squares-four"></i> Inicio</a></li>
+                <li><a href="ruta-aprendizaje.html"><i class="ph ph-map-pin-line"></i> Mi Ruta</a></li>
+                <li><a href="cursos.html"><i class="ph ph-book-open"></i> Mis Cursos</a></li>
+                <li class="active"><a href="mis-postulaciones.html"><i class="ph ph-briefcase"></i> Mis Postulaciones</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Mis Postulaciones a Pasantías</h1>
+                    <p>Meses 6-12: Sigue el avance real de tu inserción laboral en el sector privado.</p>
+                </div>
+            </header>
+
+            <div class="tabs">
+                <div class="tab active">Activas (2)</div>
+                <div class="tab">Historial (1)</div>
+            </div>
+
+            <div class="applications-list">
+                
+                <!-- Postulación 1 (Entrevista) -->
+                <div class="app-card interview-stage">
+                    <div>
+                        <div class="company-header">
+                            <div class="c-logo" style="background: #10b981;"><i class="ph ph-storefront"></i></div>
+                            <div class="c-info">
+                                <h3>Aprendiz de Despostador</h3>
+                                <p>Frigorífico "Las Pampas" S.R.L - Postulado hace 5 días</p>
+                            </div>
+                        </div>
+                        
+                        <div class="status-tracker">
+                            <div class="step done"><i class="ph-fill ph-check-circle"></i> CV Enviado</div>
+                            <div class="line done"></div>
+                            <div class="step done"><i class="ph-fill ph-check-circle"></i> Revisado (Match Válido)</div>
+                            <div class="line done"></div>
+                            <div class="step current"><i class="ph-fill ph-users"></i> Entrevista Técnica</div>
+                            <div class="line"></div>
+                            <div class="step"><i class="ph ph-handshake"></i> Contratado</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-cell">
+                        <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: #c084fc; margin-bottom: 1rem; display: inline-block;">Agendar Disponibilidad</span><br>
+                        <button class="btn-primary" style="background: #8b5cf6;">Elegir Horario de Entrevista</button>
+                    </div>
+                </div>
+
+                <!-- Postulación 2 (Enviado) -->
+                <div class="app-card">
+                    <div>
+                        <div class="company-header">
+                            <div class="c-logo" style="background: #3b82f6;"><i class="ph ph-factory"></i></div>
+                            <div class="c-info">
+                                <h3>Operario de Higiene (Turno Noche)</h3>
+                                <p>Consorcio Exportador Sureño - Postulado ayer</p>
+                            </div>
+                        </div>
+                        
+                        <div class="status-tracker">
+                            <div class="step current"><i class="ph-fill ph-paper-plane-right"></i> CV Enviado a RRHH</div>
+                            <div class="line"></div>
+                            <div class="step"><i class="ph ph-magnifying-glass"></i> En Revisión</div>
+                            <div class="line"></div>
+                            <div class="step"><i class="ph ph-users"></i> Entrevista Técnica</div>
+                            <div class="line"></div>
+                            <div class="step"><i class="ph ph-handshake"></i> Contratado</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-cell">
+                        <button class="btn-secondary" style="border-color: rgba(255,255,255,0.2); color: white;">Retirar de la oferta</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="pasantias.html" class="btn-primary" style="background: var(--clr-bg-panel); border: 1px solid var(--clr-primary); color: white;"><i class="ph ph-plus"></i> Explorar nuevas pasantías en el Job Board</a>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
